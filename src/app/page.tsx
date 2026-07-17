@@ -244,10 +244,10 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14"
           >
             {[
-              { title: "3D CBCT", image: "/images/cbct_scan.jpg", desc: "Detailed 3D imaging of teeth, bones, and tissues. Essential for implants, root canals, and complex oral surgeries. Provides unmatched precision." },
-              { title: "2D OPG", image: "/images/opg_scan.jpg", desc: "A comprehensive panoramic X-ray providing a full 2D view of your teeth, upper and lower jaws, and facial structures in a single image." },
-              { title: "2D LAT CEPH", image: "/images/lat_ceph.jpg", desc: "Lateral side view of the skull. This is crucial for orthodontic planning, assessing jaw alignment, and understanding facial growth patterns." },
-              { title: "2D TMJ", image: "/images/tmj_scan.jpg", desc: "Detailed 2D views of the temporomandibular joint. Vital for diagnosing jaw alignment disorders, clicking sounds, and jaw pain." }
+              { title: "3D CBCT", image: "/images/cbct_scan.jpg", desc: "Detailed 3D imaging of teeth, bones, and tissues. Essential for implants, root canals, and complex oral surgeries. Provides unmatched precision.", path: "/services/cbct" },
+              { title: "2D OPG", image: "/images/opg_scan.jpg", desc: "A comprehensive panoramic X-ray providing a full 2D view of your teeth, upper and lower jaws, and facial structures in a single image.", path: "/services/opg" },
+              { title: "2D LAT CEPH", image: "/images/lat_ceph.jpg", desc: "Lateral side view of the skull. This is crucial for orthodontic planning, assessing jaw alignment, and understanding facial growth patterns.", path: "/services/lateral-cephalogram" },
+              { title: "2D TMJ", image: "/images/tmj_scan.jpg", desc: "Detailed 2D views of the temporomandibular joint. Vital for diagnosing jaw alignment disorders, clicking sounds, and jaw pain.", path: "/services/tmj" }
             ].map((service, i) => (
               <motion.div 
                 key={i} 
@@ -266,12 +266,12 @@ export default function Home() {
                   <h3 className="text-2xl md:text-3xl font-extrabold mb-4 text-slate-900 tracking-tight group-hover:text-[#0288D1] transition-colors">{service.title}</h3>
                   <p className="text-slate-600 leading-relaxed text-base md:text-lg flex-1 mb-8">{service.desc}</p>
                   
-                  <div className="inline-flex items-center text-[#0288D1] font-bold uppercase tracking-wider group-hover:text-[#01579B] transition-colors w-max">
+                  <Link href={service.path} className="inline-flex items-center text-[#0288D1] font-bold uppercase tracking-wider group-hover:text-[#01579B] transition-colors w-max">
                     Learn More 
                     <div className="ml-3 w-8 h-8 rounded-full bg-[#0288D1]/10 flex items-center justify-center group-hover:bg-[#0288D1] group-hover:text-white transition-colors duration-300">
                       <ArrowRight className="w-4 h-4" />
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </motion.div>
             ))}
