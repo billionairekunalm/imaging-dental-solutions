@@ -147,21 +147,20 @@ export default function Home() {
       </nav>
 
       {/* Premium Hero Section */}
-      <section className="relative min-h-[95vh] md:min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {/* Full-width Background Video */}
-        <div className="absolute inset-0 z-0 bg-black">
+      <section className="relative w-full h-[90vh] md:h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 bg-slate-900/60 mix-blend-multiply z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-slate-900 z-10"></div>
           <video 
-            src="/images/cbct.mp4" 
             autoPlay 
             loop 
             muted 
             playsInline
-            className="w-full h-full object-cover opacity-100" 
-          />
-          {/* Subtle elegant gradient overlay for text readability, keeping video highly visible */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/70"></div>
-          {/* Refined Vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.5)_100%)]"></div>
+            className="absolute inset-0 w-full h-full object-cover scale-105"
+          >
+            <source src="/images/cbct_web.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* Content without the heavy glass box */}
