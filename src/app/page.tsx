@@ -20,6 +20,7 @@ import {
 import { ChevronRight, ArrowRight, ArrowLeft, Menu, X } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Footer from "@/components/Footer";
 
 function HoverVideo({ src, poster }: { src: string, poster: string }) {
@@ -92,8 +93,8 @@ export default function Home() {
         <div className="mx-4 md:mx-6 px-6 h-[72px] bg-black/15 hover:bg-black/25 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-between transition-colors duration-500">
           
           <div className="flex items-center gap-3 cursor-pointer">
-            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 overflow-hidden shrink-0">
-              <img src="/images/logo.png" alt="Imaging Dental Solutions Logo" className="w-full h-full object-cover" />
+            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 overflow-hidden shrink-0 relative">
+              <Image src="/images/logo.png" alt="Imaging Dental Solutions Logo" fill sizes="40px" className="object-cover" />
             </div>
             <span className="font-semibold text-lg tracking-wide text-white/95 hidden sm:block">
               Imaging Dental <span className="font-light text-white/70">Solutions</span>
@@ -157,9 +158,11 @@ export default function Home() {
             loop 
             muted 
             playsInline
+            preload="auto"
+            poster="/images/cbct_poster.jpg"
             className="absolute inset-0 w-full h-full object-cover scale-105"
           >
-            <source src="/images/cbct_web.mp4" type="video/mp4" />
+            <source src="/images/cbct_mobile.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -255,7 +258,7 @@ export default function Home() {
               >
                 <div className="w-full aspect-[16/9] bg-slate-900 relative overflow-hidden">
                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                   <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+                   <Image src={service.image} alt={service.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
                    
                    {/* Gradient overlay at bottom of image for seamless transition */}
                    <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white to-transparent z-10"></div>
@@ -322,9 +325,12 @@ export default function Home() {
                  variants={fadeInUp}
                  className="group relative rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.05)] border border-slate-100 cursor-pointer break-inside-avoid hover:shadow-[0_20px_40px_rgba(2,136,209,0.15)] transition-all duration-500"
                >
-                   <img 
+                   <Image 
                      src={item.src} 
                      alt={item.title} 
+                     width={800}
+                     height={800}
+                     sizes="(max-width: 768px) 100vw, 50vw"
                      className="w-full h-auto block transition-transform duration-700 ease-out group-hover:scale-[1.03]" 
                    />
                    
@@ -415,7 +421,7 @@ export default function Home() {
                    
                    {/* Image Header */}
                    <div className="h-64 bg-surface-variant relative overflow-hidden">
-                      <img src={branch.image} alt={branch.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                      <Image src={branch.image} alt={branch.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
                       
                       {/* Floating Badge */}
