@@ -23,8 +23,8 @@ export default function Navbar() {
       <div 
         className={`mx-4 md:mx-6 px-6 h-[72px] rounded-full flex items-center justify-between transition-all duration-500 border ${
           isScrolled 
-            ? "bg-slate-900/30 backdrop-blur-2xl border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4)]" 
-            : "bg-slate-900/90 hover:bg-slate-900/95 backdrop-blur-xl border-white/10 shadow-2xl"
+            ? "bg-slate-900/20 backdrop-blur-2xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]" 
+            : "bg-slate-900/50 hover:bg-slate-900/60 backdrop-blur-2xl border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.6)]"
         }`}
       >
         
