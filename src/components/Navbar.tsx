@@ -9,17 +9,40 @@ import { Menu, X } from "lucide-react";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      // Hide if scrolling down and past 100px, show if scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+      
+      setIsScrolled(currentScrollY > 20);
+      setLastScrollY(currentScrollY);
     };
-    window.addEventListener("scroll", handleScroll);
+    
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-6xl z-[100] transition-all duration-500">
+    <motion.nav 
+      initial={{ y: 0, opacity: 1, scale: 1 }}
+      animate={{ 
+        y: isVisible ? 0 : -100, 
+        opacity: isVisible ? 1 : 0,
+        scale: isVisible ? 1 : 0.8
+      }}
+      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      style={{ originX: 0, originY: 0 }}
+      className="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-6xl z-[100]"
+    >
       <div 
         className={`mx-4 md:mx-6 px-6 h-[72px] rounded-full flex items-center justify-between transition-all duration-500 border ${
           isScrolled 
@@ -81,6 +104,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }
