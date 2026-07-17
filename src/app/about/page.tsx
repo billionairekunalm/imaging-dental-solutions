@@ -12,53 +12,8 @@ export default function AboutPage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <div className="w-full flex flex-col min-h-screen bg-background">
-      {/* Clean Minimalist Navigation */}
-      <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-xl border-b border-black/5 transition-all duration-500">
-        <div className="max-w-6xl mx-auto px-6 h-[72px] flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 cursor-pointer group">
-            <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm border border-black/5 overflow-hidden shrink-0 group-hover:scale-105 transition-transform duration-300">
-              <img src="/images/logo.png" alt="Imaging Dental Solutions Logo" className="w-full h-full object-cover" />
-            </div>
-            <span className="font-semibold text-lg tracking-wide text-slate-800 hidden sm:block">
-              Imaging Dental <span className="font-light text-slate-500">Solutions</span>
-            </span>
-          </Link>
-          <div className="hidden md:flex items-center gap-8 font-medium text-[15px] tracking-wide">
-            <Link href="/" className="text-slate-500 hover:text-slate-800 relative after:content-[''] after:absolute after:w-0 hover:after:w-1/2 after:h-[1px] after:bg-slate-800 after:left-1/4 after:-bottom-1.5 after:transition-all after:duration-300">Home</Link>
-            <Link href="/about" className="text-slate-800 relative after:content-[''] after:absolute after:w-1/2 after:h-[1px] after:bg-slate-800 after:left-1/4 after:-bottom-1.5 after:transition-all after:duration-300">About Us</Link>
-            <Link href="/careers" className="text-slate-500 hover:text-slate-800 relative after:content-[''] after:absolute after:w-0 hover:after:w-1/2 after:h-[1px] after:bg-slate-800 after:left-1/4 after:-bottom-1.5 after:transition-all after:duration-300">Careers</Link>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden text-slate-800 p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="absolute top-[72px] left-0 right-0 bg-white shadow-xl border-b border-black/5 p-6 flex flex-col gap-6 md:hidden z-40"
-            >
-              <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-slate-600 font-medium text-lg">Home</Link>
-              <Link href="/about" onClick={() => setIsMenuOpen(false)} className="text-slate-900 font-bold text-lg">About Us</Link>
-              <Link href="/careers" onClick={() => setIsMenuOpen(false)} className="text-slate-600 font-medium text-lg">Careers</Link>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
-
       <main className="flex-grow pt-32 pb-24 max-w-7xl mx-auto px-6 w-full">
         <div className="mb-12">
           <Link href="/" className="inline-flex items-center gap-2 text-primary hover:text-primary-container font-semibold transition-colors">

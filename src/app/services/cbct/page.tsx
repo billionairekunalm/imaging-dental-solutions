@@ -32,18 +32,7 @@ export default function CBCTService() {
            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0288D1] rounded-full blur-[120px] mix-blend-screen"></div>
         </div>
 
-        {/* Navigation */}
-        <nav className="relative z-50">
-          <div className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-            <Link href="/#services" className="inline-flex items-center text-white/80 hover:text-white transition-colors gap-2 font-medium">
-              <ArrowLeft className="w-5 h-5" />
-              Back to Services
-            </Link>
-            <div className="font-semibold text-lg tracking-wide hidden sm:block">
-              Imaging Dental <span className="font-light text-white/70">Solutions</span>
-            </div>
-          </div>
-        </nav>
+
 
         <div className="max-w-6xl mx-auto px-6 pt-12 pb-24 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
