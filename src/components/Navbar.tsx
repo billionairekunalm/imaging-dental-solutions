@@ -16,8 +16,8 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Hide if scrolling down and past 100px, show if scrolling up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Hide if scrolling down and past 100px (only if mobile menu is closed), show if scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100 && !isMenuOpen) {
         setIsVisible(false);
       } else if (currentScrollY < lastScrollY) {
         setIsVisible(true);
@@ -29,7 +29,7 @@ export default function Navbar() {
     
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, isMenuOpen]);
 
   return (
     <motion.nav 
