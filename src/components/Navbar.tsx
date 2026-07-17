@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,10 +8,25 @@ import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-6xl z-[100] transition-all duration-500">
-      <div className="mx-4 md:mx-6 px-6 h-[72px] bg-slate-900/80 hover:bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-between transition-colors duration-500 shadow-2xl">
+      <div 
+        className={`mx-4 md:mx-6 px-6 h-[72px] rounded-full flex items-center justify-between transition-all duration-500 border ${
+          isScrolled 
+            ? "bg-slate-900/30 backdrop-blur-2xl border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.4)]" 
+            : "bg-slate-900/90 hover:bg-slate-900/95 backdrop-blur-xl border-white/10 shadow-2xl"
+        }`}
+      >
         
         <Link href="/" className="flex items-center gap-3 cursor-pointer">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 overflow-hidden shrink-0 relative">
